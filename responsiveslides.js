@@ -28,7 +28,10 @@
       "manualControls": "",     // Selector: Declare custom pager navigation
       "namespace": "rslides",   // String: change the default namespace used
       "before": $.noop,         // Function: Before callback
-      "after": $.noop           // Function: After callback
+      "after": $.noop,          // Function: After callback
+      "randomTimeout": false,   // Boolean: 
+      "randomTimeoutMin": 1000, // Integer: Min
+      "randomTimeoutMax": 5000  // Inetger: 
     }, options);
 
     return this.each(function () {
@@ -229,7 +232,13 @@
         if (settings.auto) {
 
           startCycle = function () {
-            rotate = setInterval(function () {
+            // Randomize wait time if needed
+            if (settings.randomTimeout) {
+              waitTime = Math.floor(Math.random() * 
+                (settings.randomTimeoutMax - settings.randomTimeoutMin + 1)) + 
+              settings.randomTimeoutMin;
+            }
+            rotate = setTimeout(function () {
 
               // Clear the event queue
               $slide.stop(true, true);
@@ -242,6 +251,7 @@
               }
 
               slideTo(idx);
+              startCycle();
             }, waitTime);
           };
 

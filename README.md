@@ -58,6 +58,8 @@ Changelog
 ======
 
 
+v1.54a (2013-05-27) - Adds options to randomize timeout for each transition in a cycle ([@mattmils]).
+
 v1.54 (2013-04-26) - Fixes few bugs with the before and after callbacks.
 
 v1.53 (2013-01-14) - Minor speed optimization (thanks [@bazineta](https://github.com/bazineta)!).
